@@ -1,6 +1,29 @@
 body {
-  background: rgb(250, 200, 200);
   font-family: 'Merienda', cursive;
   font-size: 25px;
-  color: red;
+  color: steelblue;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+ul {
+	padding: 0
+}
+
+li {
+	list-style-type: none;
+}
+
+.languages {
+	display: flex;
+	justify-content: center;
+}
+
+.languages li {
+  margin: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }

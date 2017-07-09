@@ -2,19 +2,12 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var PropTypes = require('prop-types');
 require('./index.css');
+var App = require('./components/App');
 
-// class App extends React.Component {
-//   render() {
-//     return (
-//       <div><h1>Hello World!</h1></div>
-//     )
-//   }
-// }
-//
-// ReactDOM.render(
-//   <App />,
-//   document.getElementById('app')
-// );
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);
 
 // class Avatar extends React.Component {
 //   render() {
@@ -104,60 +97,57 @@ require('./index.css');
 //   document.getElementById('app')
 // );
 
+// class Users extends React.Component {
+//   render() {
+//     var friends = this.props.list.filter(function(person) {
+//       return person.friend === true
+//     });
 
+//     var foes = this.props.list.filter(function(person) {
+//       return person.friend === false
+//     });
 
+//     return (
+//       <div>
+//         <h1>Friends</h1>
+//         <ul>
+//           {this.props.list.filter(function(person) {
+//             return person.friend === true
+//           }).map(function (friend, index) {
+//             return <li key={index}>{friend.name}</li>
+//           })}
+//         </ul>
 
-class Users extends React.Component {
-  render() {
-    var friends = this.props.list.filter(function(person) {
-      return person.friend === true
-    });
+//         <hr />
 
-    var foes = this.props.list.filter(function(person) {
-      return person.friend === false
-    });
+//         <h1> Non Friends </h1>
+//         <ul>
+//           {foes.map(function(foe) {
+//               return <li key={foe.name}>{foe.name}</li>
+//           })}
+//         </ul>
+//       </div>
+//     )
+//   }
+// }
 
-    return (
-      <div>
-        <h1>Friends</h1>
-        <ul>
-          {this.props.list.filter(function(person) {
-            return person.friend === true
-          }).map(function (friend, index) {
-            return <li key={index}>{friend.name}</li>
-          })}
-        </ul>
+// Users.propTypes = {
+//   // list: PropTypes.array.isRequired
+//   // list: PropTypes.arrayOf(PropTypes.object)
+//   list: PropTypes.arrayOf(PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     friend: PropTypes.bool.isRequired
+//   })),
+// }
 
-        <hr />
-
-        <h1> Non Friends </h1>
-        <ul>
-          {foes.map(function(foe) {
-              return <li key={foe.name}>{foe.name}</li>
-          })}
-        </ul>
-      </div>
-    )
-  }
-}
-
-Users.propTypes = {
-  // list: PropTypes.array.isRequired
-  // list: PropTypes.arrayOf(PropTypes.object)
-  list: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    friend: PropTypes.bool.isRequired
-  })),
-}
-
-ReactDOM.render(
-  <Users list={[
-    { name: 'Tyler', friend: true },
-    { name: 'Ryan', friend: true },
-    { name: 'Michael', friend: false },
-    { name: 'Mikenzi', friend: false },
-    { name: 'Jessica', friend: true },
-    { name: 'Dan', friend: false } ]}
-  />,
-  document.getElementById('app')
-);
+// ReactDOM.render(
+//   <Users list={[
+//     { name: 'Tyler', friend: true },
+//     { name: 'Ryan', friend: true },
+//     { name: 'Michael', friend: false },
+//     { name: 'Mikenzi', friend: false },
+//     { name: 'Jessica', friend: true },
+//     { name: 'Dan', friend: false } ]}
+//   />,
+//   document.getElementById('app')
+// );
