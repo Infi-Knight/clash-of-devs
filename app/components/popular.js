@@ -1,4 +1,5 @@
 var React = require('react');
+var SelectLanguage = require('./SelectLanguage');
 
 class Popular extends React.Component {
   // Initial State for our component
@@ -25,32 +26,44 @@ class Popular extends React.Component {
   }
 
   render() {
-    var languages = ['All', 'Javascript', 'Python', 'Ruby', 'Java'];
-    // console.log(this);
-    // Here this keyword refers to the Popular component instance
     return (
-      <div>
-        <p>Selected Language: {this.state.selectedLanguage}</p>
-        <ul className='languages'>
-          {languages.map(function(lang) {
-            // Inside this anyomo function this keyword is undefined unless it
-            // is bind to our state using a second argument to function
-            // Also during onClick event the null to bind specifies that
-            // we have already binded it to our component instance 
-            // lang simply refers to the function argument 
-            return(
-              <li
-                style={lang === this.state.selectedLanguage ? {color: "#d0021b"} : null} 
-                onClick={this.updateLanguage.bind(null, lang)}
-                key={lang}>
-                {lang}
-              </li>
-            )
-          }, this)}
-        </ul>      
-      </div>
+      <SelectLanguage 
+        selectedLanguage={this.state.selectedLanguage}
+        onSelect={this.updateLanguage}
+      />
     )
   }
+}
+
+module.exports = Popular;
+
+
+
+
+  // render() {
+  // var languages = ['All', 'Javascript', 'Python', 'Ruby', 'Java'];
+  //   // console.log(this);
+  //   // Here this keyword refers to the Popular component instance
+  //   return (
+  //       <ul className='languages'>
+  //         {languages.map(function(lang) {
+  //           // Inside this anyomo function this keyword is undefined unless it
+  //           // is bind to our state using a second argument to function
+  //           // Also during onClick event the null to bind specifies that
+  //           // we have already binded it to our component instance 
+  //           // lang simply refers to the function argument 
+  //           return(
+  //             <li
+  //               style={lang === this.state.selectedLanguage ? {color: "#d0021b"} : null} 
+  //               onClick={this.updateLanguage.bind(null, lang)}
+  //               key={lang}>
+  //               {lang}
+  //             </li>
+  //           )
+  //         }, this)}
+  //       </ul>      
+  //   )
+  // }
 
 
   // render() {
@@ -76,6 +89,3 @@ class Popular extends React.Component {
   //     </div>
   //   )
   // }
-}
-
-module.exports = Popular;
