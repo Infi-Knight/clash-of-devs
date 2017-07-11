@@ -5,25 +5,51 @@ body {
 }
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 ul {
-	padding: 0
+    padding: 0
 }
 
 li {
-	list-style-type: none;
+    list-style-type: none;
+}
+
+.avatar {
+    width: 150px;
+    border-radius: 50%;
 }
 
 .languages {
-	display: flex;
-	justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .languages li {
-  margin: 10px;
-  font-weight: bold;
-  cursor: pointer;
+    margin: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.popular-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.popular-item {
+    margin: 20px;
+    text-align: center;
+}
+
+.popular-rank {
+    color: green;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.space-list-items {
+    margin: 7px;
 }

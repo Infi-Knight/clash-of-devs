@@ -1,12 +1,16 @@
 var React = require('react');
+var api = require('./../utils/api');
+
 var SelectLanguage = require('./SelectLanguage');
+var RepoGrid = require('./RepoGrid');
 
 class Popular extends React.Component {
   // Initial State for our component
   constructor(props) {
     super(props);
     this.state = {
-      selectedLanguage: 'All'
+      selectedLanguage: 'All',
+      repos: null
     };
 
     // We need to ensure that the this keyword in updateLanguage
@@ -14,23 +18,50 @@ class Popular extends React.Component {
     this.updateLanguage = this.updateLanguage.bind(this);
   }
 
+  // componentDidMount is a lifecycle event which gets called by React
+  // whenever a componenet gets mounted in the DOM
+  componentDidMount () {
+    this.updateLanguage(this.state.selectedLanguage);
+}
+
   // Method to set the state of our component
   // Note that the this keyword is undefined in this instance
   // We need to bind it to our component using the bind as above 
   updateLanguage(lang) {
     this.setState(function() {
       return {
-        selectedLanguage: lang
+        selectedLanguage: lang,
+        repos: null
       }
     });
+
+    // Make AJAX requests for the initial state
+    // as well as the change in state
+    api.fetchPopularRepos(lang)
+      .then(function(repos) {
+        this.setState(function() {
+          return {
+            repos: repos
+          }
+        });
+    }.bind(this));   
   }
 
   render() {
     return (
-      <SelectLanguage 
-        selectedLanguage={this.state.selectedLanguage}
-        onSelect={this.updateLanguage}
-      />
+      <div>
+        <SelectLanguage 
+          selectedLanguage={this.state.selectedLanguage}
+          onSelect={this.updateLanguage}
+        />
+        
+        { // Since this is a http request it may need some time to Load
+        // We need to handle this delay otherwise we will get a null value for repos
+        }
+        {!this.state.repos
+          ? <p>Loading</p> : <RepoGrid repos={this.state.repos} />
+        }     
+      </div>   
     )
   }
 }
