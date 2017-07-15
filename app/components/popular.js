@@ -22,7 +22,7 @@ class Popular extends React.Component {
   // whenever a componenet gets mounted in the DOM
   componentDidMount () {
     this.updateLanguage(this.state.selectedLanguage);
-}
+  }
 
   // Method to set the state of our component
   // Note that the this keyword is undefined in this instance
