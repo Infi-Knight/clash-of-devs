@@ -1,5 +1,6 @@
 var React = require('react');
 var api = require('./../utils/api');
+var Loading = require('./Loading');
 
 var SelectLanguage = require('./SelectLanguage');
 var RepoGrid = require('./RepoGrid');
@@ -59,7 +60,7 @@ class Popular extends React.Component {
         // We need to handle this delay otherwise we will get a null value for repos
         }
         {!this.state.repos
-          ? <p>Loading</p> : <RepoGrid repos={this.state.repos} />
+          ? <Loading /> : <RepoGrid repos={this.state.repos} />
         }     
       </div>   
     )
