@@ -7,7 +7,7 @@ var Switch = ReactRouter.Switch;
 var Nav = require('./Nav');
 var Home = require('./Home');
 var Battle = require('./Battle');
-var Popular = require('./Popular');
+var Popular = require('./popular');
 var Results = require('./Results');
 
 // Switch will render only one route at a time
